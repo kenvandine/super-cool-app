@@ -1,0 +1,34 @@
+name: super-cool-app
+version: 0.1.0
+summary: Super Cool App
+description: Super Cool App that does everything!
+confinement: strict
+base: core18
+grade: stable
+
+apps:
+  super-cool-app:
+    command: super_cool_app
+    extensions: [gnome-3-28]
+    plugs:
+      - x11
+      - opengl
+      - network
+    environment:
+      __EGL_VENDOR_LIBRARY_DIRS: $__EGL_VENDOR_LIBRARY_DIRS:$SNAP/gnome-platform/usr/share/glvnd/egl_vendor.d
+
+parts:
+  super-cool-app:
+    source: .
+    plugin: flutter
+    flutter-channel: master # Which Flutter channel to use for the build
+    flutter-target: lib/main.dart # The main entry-point file of the application
+
+  # libegl-mesa0 is required by Flutter to get an EGL Context
+  libraries:
+    plugin: nil
+    stage-packages:
+      - libegl-mesa0
+    prime:
+      - usr/share/glvnd/egl_vendor.d
+      - usr/lib/*/libEGL_mesa.so.*
