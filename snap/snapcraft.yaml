@@ -9,15 +9,10 @@ grade: stable
 apps:
   super-cool-app:
     command: super_cool_app
-    extensions: [gnome-3-28]
-    plugs:
-      - x11
-      - opengl
-      - network
+    extensions: [flutter-dev]
 
 parts:
   super-cool-app:
     source: .
     plugin: flutter
-    flutter-channel: master # Which Flutter channel to use for the build
     flutter-target: lib/main.dart # The main entry-point file of the application
