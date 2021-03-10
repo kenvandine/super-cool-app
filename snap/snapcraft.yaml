@@ -5,11 +5,14 @@ description: Super Cool App that does everything!
 confinement: strict
 base: core18
 grade: stable
+architectures:
+  - build-on: [ amd64, arm64 ]
+    run-on: [ amd64, arm64 ]
 
 apps:
   super-cool-app:
     command: super_cool_app
-    extensions: [flutter-dev]
+    extensions: [flutter-master]
 
 parts:
   super-cool-app:
