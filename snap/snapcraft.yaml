@@ -7,7 +7,6 @@ base: core18
 grade: stable
 architectures:
   - build-on: [ amd64, arm64 ]
-    run-on: [ amd64, arm64 ]
 
 apps:
   super-cool-app:
